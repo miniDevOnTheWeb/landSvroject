@@ -1,0 +1,42 @@
+[
+      {
+        "id": "shshs",
+        "content": "Hola Bob, ¿viste la nueva tarea de proyecto?",
+        "senderId": "11111111-aaaa-bbbb-cccc-ffffffffffff",
+        "receiverId": "22222222-aaaa-bbbb-cccc-ffffffffffff",
+        "createdAt": "2025-10-23T10:01:30.555444",
+        "type": "PRIVATE"
+      },
+      {
+        "id": "shshsdd",
+        "content": "Sí, la acabo de ver. Parece que hay que priorizar la parte de UI.",
+        "senderId": "22222222-aaaa-bbbb-cccc-ffffffffffff",
+        "receiverId": "11111111-aaaa-bbbb-cccc-ffffffffffff",
+        "createdAt": "2025-10-23T10:03:00.111222",
+        "type": "PRIVATE"
+      },
+      {
+        "id": "shshsvvv",
+        "content": "De acuerdo. ¿Quieres que me encargue de la lógica del servidor?",
+        "senderId": "11111111-aaaa-bbbb-cccc-ffffffffffff",
+        "receiverId": "22222222-aaaa-bbbb-cccc-ffffffffffff",
+        "createdAt": "2025-10-23T10:05:40.999888",
+        "type": "PRIVATE"
+      },
+      {
+        "id": "shshsddd",
+        "content": "Perfecto, yo me ocupo del diseño y los estilos en React.",
+        "senderId": "22222222-aaaa-bbbb-cccc-ffffffffffff",
+        "receiverId": "11111111-aaaa-bbbb-cccc-ffffffffffff",
+        "createdAt": "2025-10-23T10:07:15.333222",
+        "type": "PRIVATE"
+      },
+      {
+        "id": "shshvdvds",
+        "content": "¡Fantástico! Hablemos mañana.",
+        "senderId": "11111111-aaaa-bbbb-cccc-ffffffffffff",
+        "receiverId": "22222222-aaaa-bbbb-cccc-ffffffffffff",
+        "createdAt": "2025-10-23T10:08:50.777666",
+        "type": "PRIVATE"
+      }
+    ]

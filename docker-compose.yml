@@ -1,0 +1,55 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: land_sv-db
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - app_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 1m30s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build: 
+      context: ./landSV
+      dockerfile: Dockerfile
+    container_name: land_sv-backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app_net
+
+  frontend:
+    build:
+      context: ./landSVFrontend
+      dockerfile: Dockerfile
+      args:
+        VITE_GOOGLE_CLIENT_ID: ${VITE_GOOGLE_CLIENT_ID}
+    container_name: land_sv-frontend
+    ports:
+      - "4000:80"
+    depends_on:
+      - backend
+    networks:
+      - app_net
+    env_file:
+      - .env
+
+networks:
+  app_net:
+
+volumes:
+  db_data:

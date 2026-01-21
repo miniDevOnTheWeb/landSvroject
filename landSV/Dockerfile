@@ -1,0 +1,23 @@
+FROM maven:3.9.9-eclipse-temurin-21 as build
+
+WORKDIR /app
+
+COPY pom.xml .
+
+RUN mvn dependency:go-offline -B
+
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+# second stage deploy on tomcat server
+FROM tomcat:10.1-jdk21
+WORKDIR /usr/local/tomcat/webapps/
+
+RUN rm -rf ROOT
+
+COPY --from=build /app/target/*.war ROOT.war
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
