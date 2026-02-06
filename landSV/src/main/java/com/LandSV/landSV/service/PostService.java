@@ -61,6 +61,7 @@ public class PostService {
                 String url = null;
                 try {
                     url = cloudinaryService.uploadImage(imageFile);
+                    System.out.println(url);
                 } catch (IOException e) {
                     postRepository.delete(post);
                     throw new RuntimeException("Intentelo mas tarde");

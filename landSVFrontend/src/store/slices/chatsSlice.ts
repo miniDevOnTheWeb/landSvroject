@@ -7,13 +7,13 @@ interface State {
     loading: boolean
 }
 
-const initialState:State = {
+const initialState: State = {
     chats: null,
     loading: false,
     error: null
 }
 
-const chatsSlice = createSlice ({
+const chatsSlice = createSlice({
     name: 'chats',
     initialState,
     reducers: {
@@ -29,12 +29,12 @@ const chatsSlice = createSlice ({
         setChatsError: (state, action: PayloadAction<string | null>) => {
             state.error = action.payload
             state.loading = false
-        }, 
-        addMessageToChat: (state, action:PayloadAction<Message>) => {
+        },
+        addMessageToChat: (state, action: PayloadAction<Message>) => {
             const { chatId } = action.payload
             const chat = state.chats?.find(chat => chat.id === chatId)
 
-            if(!chat) return
+            if (!chat) return
 
             chat.messages = chat.messages || []
             chat.messages.push(action.payload)
@@ -45,11 +45,11 @@ const chatsSlice = createSlice ({
 
             state.chats?.sort((a, b) => {
                 console.log(a.messages)
-                const aLast = a.lastMessage || ( a.messages.length > 0
-                    ? a.messages[a.messages.length - 1].createdAt 
+                const aLast = a.lastMessage || (a.messages.length > 0
+                    ? a.messages[a.messages.length - 1].createdAt
                     : 0)
 
-                const bLast = b.lastMessage ||  (b.messages.length > 0
+                const bLast = b.lastMessage || (b.messages.length > 0
                     ? b.messages[b.messages.length - 1].createdAt
                     : 0)
 
@@ -57,14 +57,14 @@ const chatsSlice = createSlice ({
             })
         },
         setHasUnseenMessage: (state, action: PayloadAction<{ id: string }>) => {
-            if(!state.chats) return
+            if (!state.chats) return
             const chat = state.chats.find(c => c.id === action.payload.id)
             if (chat) {
                 chat.hasUnseenMessages = false
             }
         },
-        deleteChat: (state, action:PayloadAction<{ id: string }>) => {
-            if(!state.chats) return
+        deleteChat: (state, action: PayloadAction<{ id: string }>) => {
+            if (!state.chats) return
             state.chats = state.chats.filter(chat => chat.id !== action.payload.id)
         }
     }

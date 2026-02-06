@@ -16,7 +16,6 @@ public class PostRequest {
     @NotBlank(message = "El usuario creador esta ausente")
     private String description;
 
-    @NotBlank(message = "El usuario creador esta ausente")
     private List<MultipartFile> images;
 
     @NotBlank(message = "La ubicacion es obligatoria")

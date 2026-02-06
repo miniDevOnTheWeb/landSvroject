@@ -24,7 +24,12 @@ body {
   flex-direction: column;
 }
 
-.chats-side-menu > h4 { color: #fff; text-align: center; margin: 0; margin-top: 10px; }
+.chats-side-menu>h4 {
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
 
 .chats-list {
   color: #fff;
@@ -38,7 +43,8 @@ body {
   box-sizing: border-box;
 }
 
-.chat, .selected-chat {
+.chat,
+.selected-chat {
   display: flex;
   align-items: center;
   background-color: #222;
@@ -58,7 +64,8 @@ body {
   border: 1px solid #666;
 }
 
-.chat:hover, .selected-chat:hover {
+.chat:hover,
+.selected-chat:hover {
   background-color: #111;
 }
 
@@ -80,7 +87,8 @@ body {
   font-weight: 600;
 }
 
-.chat-data, .cbt-list-item {
+.chat-data,
+.cbt-list-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -166,11 +174,12 @@ body {
   outline: none;
   background-color: #666;
 }
+
 .new-msg::placeholder {
   color: #bbb;
 }
 
-.new-message-form > button {
+.new-message-form>button {
   border-radius: 50%;
   display: flex;
   background-color: transparent;
@@ -208,7 +217,7 @@ body {
 .message-content {
   padding: 0;
   margin: 0;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .own-message {
@@ -227,14 +236,14 @@ body {
   border-radius: 10px 10px 10px 0px;
 }
 
-.own-message > span {
+.own-message>span {
   font-size: 8px;
   position: absolute;
   bottom: 2px;
   right: 5px;
 }
 
-.received-message > span {
+.received-message>span {
   font-size: 8px;
   position: absolute;
   bottom: 3px;
@@ -267,9 +276,11 @@ body {
   background-color: #060;
 }
 
-.login-form > input::placeholder { color: #ccc;}
+.login-form>input::placeholder {
+  color: #ccc;
+}
 
-.login-form > input {
+.login-form>input {
   padding: 10px;
   border: none;
   border-radius: 7px;
@@ -278,11 +289,11 @@ body {
   background-color: #fff3;
 }
 
-.login-form > button {
+.login-form>button {
   padding: 5px 15px;
   border: none;
   border-radius: 10px;
-  background-color:#090;
+  background-color: #090;
   color: #fff;
   font-family: montserrat;
   font-weight: 600;
@@ -290,26 +301,28 @@ body {
   transition: scale .2s linear, opacity .2s linear;
 }
 
-.login-form > .message {
+.login-form>.message {
   padding: 0;
   margin: 0;
   color: #ccc;
 }
 
-.login-form > p { text-align: center;}
+.login-form>p {
+  text-align: center;
+}
 
-.login-form > p > a {
+.login-form>p>a {
   color: #dd0;
   text-decoration: underline;
   font-size: 13px;
   text-align: center;
 }
 
-.login-form > a:hover {
+.login-form>a:hover {
   color: #0708;
 }
 
-.login-form > button:hover {
+.login-form>button:hover {
   opacity: .9;
   scale: 1.02
 }
@@ -352,7 +365,7 @@ body {
   border-radius: 10px;
 }
 
-.search-form > h3 {
+.search-form>h3 {
   text-align: center;
   margin: 5px auto;
   margin-top: 0;
@@ -360,7 +373,7 @@ body {
   color: #ddd;
 }
 
-.search-form > input {
+.search-form>input {
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -369,7 +382,7 @@ body {
   color: #fff;
 }
 
-.search-form > button {
+.search-form>button {
   padding: 10px;
   border: none;
   background-color: #fff4;
@@ -397,7 +410,8 @@ body {
   color: #bbb;
 }
 
-.posts-results-list, .posts-created {
+.posts-results-list,
+.posts-created {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -433,16 +447,24 @@ body {
   scrollbar-width: none;
 }
 
-.post > p {
+.post>p {
   margin: 0;
   font-size: 13px;
   text-align: start;
   font-size: 12px;
 }
 
-.results-container > h3 { margin: 10px; color: #fff;}
+.results-container>h3 {
+  margin: 10px;
+  color: #fff;
+}
 
-.results-message { margin: 10px auto; margin-bottom: 20px; color: #ccc; font-size: 13px;}
+.results-message {
+  margin: 10px auto;
+  margin-bottom: 20px;
+  color: #ccc;
+  font-size: 13px;
+}
 
 .post:hover {
   background-color: #333;
@@ -504,7 +526,11 @@ body {
   scrollbar-width: none;
   padding: 30px;
 }
-.check-description, .check-strong, .check-location, .check-price {
+
+.check-description,
+.check-strong,
+.check-location,
+.check-price {
   margin: 0;
   padding: 3px 0px;
   color: #eee;
@@ -524,7 +550,7 @@ body {
   margin: 10px auto;
 }
 
-.post-result > h3 {
+.post-result>h3 {
   text-align: center;
   color: #fff;
   margin: 0;
@@ -532,7 +558,7 @@ body {
   margin-bottom: 20px;
 }
 
-.comment-form > input {
+.comment-form>input {
   flex: 1;
   padding: 10px;
   border-radius: 10px;
@@ -542,7 +568,7 @@ body {
   background-color: #666;
 }
 
-.comment-form > input::placeholder {
+.comment-form>input::placeholder {
   color: #bbb;
 }
 
@@ -567,7 +593,7 @@ body {
 }
 
 .image-container {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100dvw;
@@ -578,7 +604,7 @@ body {
   justify-content: center;
 }
 
-.image-container > button {
+.image-container>button {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -591,7 +617,7 @@ body {
   text-align: center;
 }
 
-.image-options > img {
+.image-options>img {
   max-width: 700px;
   height: 100%;
   max-height: 600px;
@@ -611,7 +637,7 @@ body {
   margin-top: 10px;
 }
 
-.options > button {
+.options>button {
   color: #333;
   background-color: #222;
   border-radius: 10px;
@@ -628,14 +654,18 @@ body {
   font-size: 20px;
 }
 
-  #check-bar {
-    display: none;
-  }
+#check-bar {
+  display: none;
+}
 
-  .menu-icon { display: none;}
+.menu-icon {
+  display: none;
+}
 
 @media screen and (max-width: 600px) {
-  .menu-icon { display: block;}
+  .menu-icon {
+    display: block;
+  }
 
   .chats-side-menu {
     position: absolute;
@@ -644,7 +674,9 @@ body {
     animation: open-side-menu .2s ease-in-out;
     height: calc(100% - 50px);
   }
-  .menu-icon { color: #fff; 
+
+  .menu-icon {
+    color: #fff;
     fill: #fff;
     position: absolute;
     z-index: 10;
@@ -653,13 +685,14 @@ body {
     left: 10px;
   }
 
-  #check-bar:checked ~ .chats-side-menu {
+  #check-bar:checked~.chats-side-menu {
     animation: side-menu .1s linear forwards;
   }
 
-  .image-options > img {
+  .image-options>img {
     max-width: 100%;
   }
+
   .profile-section {
     flex-direction: column;
   }
@@ -696,7 +729,9 @@ body {
     gap: 10px;
   }
 
-  .post { border-bottom: 1px solid #fff;}
+  .post {
+    border-bottom: 1px solid #fff;
+  }
 
   .search-form-container {
     width: 90%;
@@ -712,7 +747,9 @@ body {
 @keyframes side-menu {
   from {
     transform: translateX(0);
-  } to {
+  }
+
+  to {
     transform: translateX(-100%);
   }
 }
@@ -720,7 +757,9 @@ body {
 @keyframes open-side-menu {
   from {
     transform: translateX(-100%);
-  } to {
+  }
+
+  to {
     transform: translateX(0);
   }
 }
@@ -733,15 +772,25 @@ body {
 }
 
 @media screen and (max-width: 450px) {
-  .send-code-form { width: 90%; }
+  .send-code-form {
+    width: 90%;
+  }
 
-  .verify-code-form { width: 90%;}
+  .verify-code-form {
+    width: 90%;
+  }
 
-  .register-form {width: 90%;}
+  .register-form {
+    width: 90%;
+  }
 
-  .create-post-form { width: 95%;}
+  .create-post-form {
+    width: 95%;
+  }
 
-  .image-options > img { width: 90%;}
+  .image-options>img {
+    width: 90%;
+  }
 
   .login-form {
     width: 90%;
@@ -759,9 +808,11 @@ body {
   gap: 10px;
 }
 
-  .post { border-bottom: 1px solid #fff;}
+.post {
+  border-bottom: 1px solid #fff;
+}
 
-.navbar-list > li {
+.navbar-list>li {
   padding: 5px 20px;
   background-color: #333;
   border-radius: 8px;
@@ -772,7 +823,7 @@ li:hover {
   cursor: pointer;
 }
 
-li > a {
+li>a {
   color: #fff;
   text-decoration: none;
   display: flex;
@@ -814,11 +865,13 @@ li > a {
   cursor: pointer;
 }
 
-.move > svg {
+.move>svg {
   fill: #fff;
 }
 
-.post-result {position: relative;}
+.post-result {
+  position: relative;
+}
 
 .create-chat-button {
   position: absolute;
@@ -835,7 +888,7 @@ li > a {
   cursor: pointer;
 }
 
-.create-chat-button > svg {
+.create-chat-button>svg {
   color: #fff;
 }
 
@@ -855,27 +908,27 @@ li > a {
   margin: auto;
 }
 
-.create-chat-container > h3 {
+.create-chat-container>h3 {
   margin: 0px;
 }
 
-.create-chat-container > p {
- font-size: 12px; 
+.create-chat-container>p {
+  font-size: 12px;
 }
 
-.create-chat-container > .options > button {
+.create-chat-container>.options>button {
   background-color: #990;
   color: #fff;
   border: none;
 }
 
-.create-chat-container > .options > button:nth-child(2) {
+.create-chat-container>.options>button:nth-child(2) {
   background-color: #0a0;
   color: #fff;
   font-weight: 700;
 }
 
-.create-chat-container > input {
+.create-chat-container>input {
   padding: 10px;
   width: 90%;
   border-radius: 10px;
@@ -884,7 +937,9 @@ li > a {
   border: none;
 }
 
-.create-chat-container > input::placeholder { color: #ddd;}
+.create-chat-container>input::placeholder {
+  color: #ddd;
+}
 
 .create-chat-error {
   margin: 0;
@@ -926,7 +981,7 @@ strong {
   border-top: 1px solid #fff;
 }
 
-.profile-page > h2 {
+.profile-page>h2 {
   text-align: center;
   font-size: 14px;
   color: #ccc;
@@ -948,11 +1003,15 @@ strong {
   background-color: #222;
 }
 
-.posts-created > h3 {text-align: center; font-size: 13px;color: #ddd;}
+.posts-created>h3 {
+  text-align: center;
+  font-size: 13px;
+  color: #ddd;
+}
 
 .created-posts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px , 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   margin: 0;
   gap: 10px;
   padding: 20px;
@@ -965,7 +1024,7 @@ strong {
   scrollbar-width: none;
 }
 
-.created-posts > .post {
+.created-posts>.post {
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -985,14 +1044,17 @@ strong {
   right: 10px;
 }
 
-.delete-post-button > svg { width: 25px !important; color: #fff;}
+.delete-post-button>svg {
+  width: 25px !important;
+  color: #fff;
+}
 
-.delete-post-button:hover > svg {
+.delete-post-button:hover>svg {
   fill: #d00;
   color: #fff;
 }
 
-.created-posts > .post:hover {
+.created-posts>.post:hover {
   background-color: #444;
 }
 
@@ -1001,7 +1063,8 @@ strong {
   object-fit: cover;
 }
 
-.email, .username {
+.email,
+.username {
   border-bottom: 1px solid #fff !important;
   padding: 0px 0px 10px 0px;
   font-size: 13px !important;
@@ -1057,7 +1120,7 @@ strong {
   border-radius: 5px;
 }
 
-.create-post-form > input {
+.create-post-form>input {
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -1066,7 +1129,7 @@ strong {
   outline: none;
 }
 
-.create-post-form > h4 {
+.create-post-form>h4 {
   margin: 0;
   text-align: center;
   color: #070;
@@ -1085,7 +1148,7 @@ strong {
   outline: none;
 }
 
-.create-post-form > button {
+.create-post-form>button {
   padding: 8px 40px;
   background-color: #070;
   border: none;
@@ -1099,14 +1162,16 @@ strong {
   transition: transform .2s linear;
 }
 
-.create-post-form > button:hover {
+.create-post-form>button:hover {
   animation: button linear .7s infinite alternate-reverse;
 }
 
 @keyframes button {
   from {
     transform: translate(0, 0);
-  } to {
+  }
+
+  to {
     transform: translate(0, -2px);
   }
 }
@@ -1156,7 +1221,7 @@ strong {
 .comment-date {
   position: absolute;
   right: 5px;
-  bottom:4px;
+  bottom: 4px;
   font-size: 10px;
   background-color: #999;
   color: #000;
@@ -1171,7 +1236,9 @@ strong {
   display: flex;
 }
 
-.send-code-form, .verify-code-form, .register-form {
+.send-code-form,
+.verify-code-form,
+.register-form {
   display: flex;
   flex-direction: column;
   background-color: #000;
@@ -1183,7 +1250,7 @@ strong {
   gap: 5px;
 }
 
-.send-code-options  {
+.send-code-options {
   display: flex;
   width: 100%;
 }
@@ -1195,7 +1262,9 @@ strong {
   gap: 3px;
 }
 
-.register-form > input, .send-code-form > input, .verify-code-form > input {
+.register-form>input,
+.send-code-form>input,
+.verify-code-form>input {
   padding: 10px;
   border-radius: 9px;
   border: none;
@@ -1204,13 +1273,15 @@ strong {
   outline: none;
 }
 
-.register-form > h3, .send-code-form > h3, .verify-code-form > h3 { 
-  color: #fff; 
+.register-form>h3,
+.send-code-form>h3,
+.verify-code-form>h3 {
+  color: #fff;
   font-size: 13px;
   text-align: center;
 }
 
-.register-options > button {
+.register-options>button {
   flex: 1;
   padding: 5px;
   border-radius: 8px;
@@ -1222,15 +1293,15 @@ strong {
   font-weight: 600;
 }
 
-.register-options > button:first-child {
+.register-options>button:first-child {
   background-color: #bb0;
 }
 
-.register-options > button:nth-child(2) {
+.register-options>button:nth-child(2) {
   background-color: #090;
 }
 
-button > a {
+button>a {
   text-decoration: none;
   font-size: inherit;
   color: inherit;
@@ -1284,14 +1355,17 @@ button > a {
   cursor: pointer;
 }
 
-.drag-drop-images > p {
+.drag-drop-images>p {
   text-align: center;
   color: #999;
   font-size: smaller;
   margin: auto;
 }
 
-.drag-drop-images > input { opacity: 0; display: none; }
+.drag-drop-images>input {
+  opacity: 0;
+  display: none;
+}
 
 .clean-files {
   position: absolute;
@@ -1311,7 +1385,7 @@ button > a {
 .overlay {
   width: 100%;
   height: 100%;
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
@@ -1319,7 +1393,8 @@ button > a {
   pointer-events: all;
 }
 
-.smaller-overlay, .smaller-overlay {
+.smaller-overlay,
+.smaller-overlay {
   width: 25px;
   height: 25px;
   animation: loading 6s linear infinite;
@@ -1348,7 +1423,7 @@ button > a {
   gap: 5px;
 }
 
-.saving-loading > .smaller-overlay {
+.saving-loading>.smaller-overlay {
   margin: 0;
   padding: 0;
 }
@@ -1356,7 +1431,9 @@ button > a {
 @keyframes loading {
   0% {
     transform: rotate(0);
-  } 100% {
+  }
+
+  100% {
     transform: rotate(360deg);
   }
 }
@@ -1393,7 +1470,7 @@ button > a {
   font-size: 11px;
 }
 
-.drag-drop-profilephoto > input {
+.drag-drop-profilephoto>input {
   display: none;
 }
 
@@ -1411,7 +1488,7 @@ button > a {
   gap: 10px;
 }
 
-.edit-form > input {
+.edit-form>input {
   padding: 10px;
   border-radius: 10px;
   border: none;
@@ -1426,7 +1503,9 @@ input {
   font-size: 12px;
 }
 
-input::placeholder { color: #999;}
+input::placeholder {
+  color: #999;
+}
 
 .save-button {
   padding: 7px 40px;
