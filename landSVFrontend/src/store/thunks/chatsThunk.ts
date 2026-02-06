@@ -2,11 +2,11 @@ import type { Chat } from "../../types";
 import { setChats, setChatsError, setChatsLoading, setHasUnseenMessage } from "../slices/chatsSlice";
 import type { AppDispatch } from "../store";
 
-export const loadChats = ({ id }:{ id: string }) => async (dispatch:AppDispatch) => {
+export const loadChats = ({ id }: { id: string }) => async (dispatch: AppDispatch) => {
     try {
         dispatch(setChatsLoading(true))
 
-        const response = await fetch (`http://localhost:8080/chats/getUserChats/${id}` , {
+        const response = await fetch(`/api/chats/getUserChats/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
@@ -14,8 +14,8 @@ export const loadChats = ({ id }:{ id: string }) => async (dispatch:AppDispatch)
         })
 
         const data = await response.json()
-        if(!response.ok) {
-            return dispatch(setChatsError( data.message ))
+        if (!response.ok) {
+            return dispatch(setChatsError(data.message))
         }
 
         dispatch(setChats(data.chats))
@@ -25,11 +25,11 @@ export const loadChats = ({ id }:{ id: string }) => async (dispatch:AppDispatch)
     }
 }
 
-export const markAsSeen = ({ chat }:{ chat: Chat }) => async (dispatch:AppDispatch) => {
+export const markAsSeen = ({ chat }: { chat: Chat }) => async (dispatch: AppDispatch) => {
     try {
         dispatch(setChatsLoading(true))
 
-        const response = await fetch (`http://localhost:8080/chats/setSeenMessages/${chat.id}` , {
+        const response = await fetch(`/api/chats/setSeenMessages/${chat.id}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
@@ -37,8 +37,8 @@ export const markAsSeen = ({ chat }:{ chat: Chat }) => async (dispatch:AppDispat
         })
 
         const data = await response.json()
-        if(!response.ok) {
-            return dispatch(setChatsError( data.message ))
+        if (!response.ok) {
+            return dispatch(setChatsError(data.message))
         }
 
         dispatch(setHasUnseenMessage(chat))
@@ -47,23 +47,23 @@ export const markAsSeen = ({ chat }:{ chat: Chat }) => async (dispatch:AppDispat
         dispatch(setChatsError(e.message))
     }
 }
-export const createChat = ({ creatorId, invitedId, firstMessage }:{ creatorId: string, invitedId: string, firstMessage: string }) => async (dispatch:AppDispatch) => {
+export const createChat = ({ creatorId, invitedId, firstMessage }: { creatorId: string, invitedId: string, firstMessage: string }) => async (dispatch: AppDispatch) => {
     try {
         dispatch(setChatsLoading(true))
 
-        const response = await fetch (`http://localhost:8080/chats/create` , {
+        const response = await fetch(`/api/chats/create`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({ user1: creatorId, user2: invitedId, firstMessage })
         })
 
         const data = await response.json()
         console.log(data)
-        if(!response.ok) {
-            return dispatch(setChatsError( data.message ))
+        if (!response.ok) {
+            return dispatch(setChatsError(data.message))
         }
 
         window.location.href = '/dashboard/chat-page'
