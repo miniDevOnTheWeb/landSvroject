@@ -30,8 +30,14 @@ export const ChatSocketProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     useEffect(() => {
         if (!user) return
 
-        const ws = new WebSocket(`/api/ws/chats?userId=${user?.id}`)
+        const protocol = window.location.protocol === 'https' ? 'wss' : 'ws'
+
+        const ws = new WebSocket(`${protocol}://${window.location.host}/ws/chats?userId=${user?.id}`)
         socket.current = ws
+
+        ws.onopen = () => console.log('ready for use the socket')
+        ws.onerror = () => console.error('an error ocurred with the socket')
+        ws.onclose = () => console.warn('socket conection closed')
 
         ws.onmessage = (event) => {
             const message: Message = JSON.parse(event.data)
