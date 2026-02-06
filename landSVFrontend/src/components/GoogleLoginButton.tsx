@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import type { AppDispatch } from '../store/store'
 import { setUser, setUserError, setUserLoading } from '../store/slices/userSlice'
 
-export function GoogleLoginButton () {
+export function GoogleLoginButton() {
     const dispatch = useDispatch<AppDispatch>()
 
     const handleSuccess = async (credentialResponse: CredentialResponse) => {
@@ -12,17 +12,17 @@ export function GoogleLoginButton () {
         try {
             dispatch(setUserLoading(true))
 
-            const res = await fetch('http://localhost:8080/auth/google/login',{
+            const res = await fetch('/api/auth/google/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ token })
             })
 
             const data = await res.json()
 
-            if(!res.ok) {
+            if (!res.ok) {
                 return dispatch(setUserError(data.message))
             }
 
@@ -39,7 +39,7 @@ export function GoogleLoginButton () {
 
     const handleError = () => {
         console.log('Error en el inicio de sesion con google')
-    }    
+    }
 
     const vite2 = import.meta.env.VITE_GOOGLE_CLIENT_ID_BY_ARG
 
