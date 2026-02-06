@@ -98,8 +98,9 @@ public class AuthController {
 
     @PostMapping("/createVerificationCode")
     public ResponseEntity<?> createCode (@RequestParam String email) throws IOException, MessagingException {
+        System.out.println(email);
         mailService.createVerificationCode(email);
-
+        System.out.println("se envio");
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of(
                 "status", HttpStatus.CREATED,
                 "message", "Code sent successfully"

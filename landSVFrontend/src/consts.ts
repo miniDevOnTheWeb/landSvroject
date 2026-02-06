@@ -1,7 +1,7 @@
 export const transformDate = (isoDate: string) => {
     const date = new Date(isoDate)
 
-    return date.toLocaleDateString('es-ES', { day: 'numeric', year: 'numeric', month: 'short'})
+    return date.toLocaleDateString('es-ES', { day: 'numeric', year: 'numeric', month: 'short' })
 }
 
 // ------------------> routes <------------------------

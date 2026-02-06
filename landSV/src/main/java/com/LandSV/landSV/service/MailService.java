@@ -9,6 +9,9 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
+import org.springframework.mail.MailMessage;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -43,8 +46,10 @@ public class MailService {
             if (userRepository.existsByEmail(email)) {
                 throw new DuplicatedException("The email is already registered");
             }
+            System.out.println("se recibio el email");
 
             String code = createCode();
+            System.out.println(code);
             VerificationCode verificationCode = new VerificationCode(code, email);
             verificationCodeRepository.save(verificationCode);
 
@@ -53,7 +58,7 @@ public class MailService {
                        <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
                            <div style="background-color: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                                <h2 style="color: #4CAF50;">¡Hola %s! 👋</h2>
-                               <p style="font-size: 16px; color: #333;">Tu código de verificación es <b>%s</b></p>
+                               <p style="font-size: 16px; color: #333; padding-left: 20px; border-left : #000;">Tu código de verificación es <b>%s</b></p>
                                <p style="font-size: 14px; color: gray;">Gracias por usar nuestros servicios.</p>
                            </div>
                        </body>
@@ -66,8 +71,8 @@ public class MailService {
             helper.setText(htmlContent, true);
             helper.setFrom(serveEmail);
             helper.setSubject("Código de verificación");
+            System.out.println("se creo el mail");
             mailSender.send(message);
-
         } catch (DuplicatedException e) {
             throw e;
 
