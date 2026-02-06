@@ -69,7 +69,7 @@ public class MailService {
             MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
             helper.setTo(email);
             helper.setText(htmlContent, true);
-            helper.setFrom(serveEmail);
+            helper.setFrom("noreply@landsv.app");
             helper.setSubject("Código de verificación");
             System.out.println("se creo el mail");
             mailSender.send(message);
