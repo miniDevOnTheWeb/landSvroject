@@ -30,7 +30,7 @@ export const ChatSocketProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     useEffect(() => {
         if (!user) return
 
-        const ws = new WebSocket(`api/ws/chats?userId=${user?.id}`)
+        const ws = new WebSocket(`/api/ws/chats?userId=${user?.id}`)
         socket.current = ws
 
         ws.onmessage = (event) => {
