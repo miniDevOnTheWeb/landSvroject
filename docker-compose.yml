@@ -1,36 +1,49 @@
-version: '3.9'
+version: "3.9"
 
 services:
+
   db:
     image: mysql:8.0
     container_name: land_sv-db
-    volumes:
-      - db_data:/var/lib/mysql
+    restart: always
+    command: --innodb-buffer-pool-size=128M --max_connections=50
     env_file:
       - .env
+    volumes:
+      - db_data:/var/lib/mysql
     networks:
       - app_net
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 30s
-      timeout: 1m30s
+      timeout: 20s
       retries: 5
-      start_period: 30s
 
   backend:
-    build: 
+    build:
       context: ./landSV
       dockerfile: Dockerfile
     container_name: land_sv-backend
-    ports:
-      - "8080:8080"
+    restart: always
+    environment:
+      JAVA_OPTS: "-Xms128m -Xmx384m"
     env_file:
       - .env
+    ports:
+      - "8080:8080"
     depends_on:
       db:
         condition: service_healthy
     networks:
       - app_net
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   frontend:
     build:
@@ -39,14 +52,19 @@ services:
       args:
         VITE_GOOGLE_CLIENT_ID: ${VITE_GOOGLE_CLIENT_ID}
     container_name: land_sv-frontend
+    restart: always
+    env_file:
+      - .env
     ports:
       - "80:80"
     depends_on:
       - backend
     networks:
       - app_net
-    env_file:
-      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 128M
 
 networks:
   app_net:
