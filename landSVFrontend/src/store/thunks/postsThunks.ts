@@ -7,32 +7,32 @@ import { addComment, setComments, setCommentsError, setCommentsLoading } from ".
 import { commentPostApi, createPostApi, deletePostApi, getCommentsByPostApi, getMyPostsApi, getPostByIdApi, getPostBySearchApi } from "../../consts";
 
 interface GetPostsInterface {
-    max: number, 
+    max: number,
     search: string,
     setError: React.Dispatch<SetStateAction<string | null>>,
     setPosts: React.Dispatch<SetStateAction<Post[] | null>>,
     setLoading: React.Dispatch<SetStateAction<boolean>>
 }
 
-export const getPostsByDepartment = async ({ max, search, setError, setPosts, setLoading} : GetPostsInterface) => {
+export const getPostsByDepartment = async ({ max, search, setError, setPosts, setLoading }: GetPostsInterface) => {
     setLoading(true)
 
     try {
-        const response = await fetch (`${getPostBySearchApi}?maxPrice=${max}&location=${search}` , {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setError(data.message)
+        const response = await fetch(`${getPostBySearchApi}?maxPrice=${max}&location=${search}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
-            
-            localStorage.setItem('last_search', search)
-            localStorage.setItem('max_price', max.toString())
-            setPosts(data.posts)
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return setError(data.message)
+        }
+
+        localStorage.setItem('last_search', search)
+        localStorage.setItem('max_price', max.toString())
+        setPosts(data.posts)
     } catch (e) {
         const error = e as Error
         setError(error.message)
@@ -41,23 +41,23 @@ export const getPostsByDepartment = async ({ max, search, setError, setPosts, se
     }
 }
 
-export const getPostsByUserId = ({ userId } : { userId: string }) => async (dispatch: AppDispatch) => {
+export const getPostsByUserId = ({ userId }: { userId: string }) => async (dispatch: AppDispatch) => {
     dispatch(setPostsLoading(true))
 
     try {
-        const response = await fetch (`${getMyPostsApi}${userId}` , {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return dispatch(setPostsError(data.message))
+        const response = await fetch(`${getMyPostsApi}${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
-            
-            dispatch(setPosts(data.posts))
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return dispatch(setPostsError(data.message))
+        }
+
+        dispatch(setPosts(data.posts))
     } catch (e) {
         const error = e as Error
         dispatch(setPostsError(error.message))
@@ -73,23 +73,23 @@ interface GetPostSelectedInterface {
     setLoading: React.Dispatch<SetStateAction<boolean>>
 }
 
-export const getPostSelected = async ({ postId, setPost, setError, setLoading } : GetPostSelectedInterface) => {
+export const getPostSelected = async ({ postId, setPost, setError, setLoading }: GetPostSelectedInterface) => {
     setLoading(true)
 
     try {
-        const response = await fetch (`${getPostByIdApi}${postId}` , {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setError(data.message)
+        const response = await fetch(`${getPostByIdApi}${postId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
-            
-            setPost(data.post)
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return setError(data.message)
+        }
+
+        setPost(data.post)
     } catch (e) {
         const error = e as Error
         setError(error.message)
@@ -109,7 +109,7 @@ interface CreatePost {
     setLoading: React.Dispatch<SetStateAction<boolean>>
 }
 
-export const createPost = async ({ files, userId, location, phoneNumber, description, price, setError, setLoading } : CreatePost) => {
+export const createPost = async ({ files, userId, location, phoneNumber, description, price, setError, setLoading }: CreatePost) => {
     try {
         setLoading(true)
         const formdata = new FormData()
@@ -119,30 +119,30 @@ export const createPost = async ({ files, userId, location, phoneNumber, descrip
         formdata.append('location', location)
         formdata.append('phoneNumber', phoneNumber)
         formdata.append('userId', userId)
-        if(files) {
+        if (files) {
             files.forEach(file => {
                 formdata.append('images', file)
             })
         }
 
 
-        const response = await fetch (createPostApi , {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                },
-                body: formdata
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setError(data.message)
-            }
-            
-            window.location.href = '/dashboard/profile'
+        const response = await fetch(createPostApi, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            },
+            body: formdata
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return setError(data.message || 'Error al crear la publicación')
+        }
+
+        window.location.href = '/dashboard/profile'
     } catch (e) {
         const error = e as Error
-        setError(error.message)
+        setError(error.message || 'Error al crear la publicación')
     } finally {
         setLoading(false)
     }
@@ -156,25 +156,25 @@ interface CommentPost {
     setLoading: React.Dispatch<SetStateAction<boolean>>
 }
 
-export const commentPost = ({ postId, content, userId, setError, setLoading } : CommentPost) => async (dispatch:AppDispatch) => {
+export const commentPost = ({ postId, content, userId, setError, setLoading }: CommentPost) => async (dispatch: AppDispatch) => {
     try {
         setLoading(true)
 
-        const response = await fetch (commentPostApi , {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify({ userId, postId, content })
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setError(data.message)
-            }
-            
-            dispatch(addComment(data.comment))
+        const response = await fetch(commentPostApi, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userId, postId, content })
+        })
+
+        const data = await response.json()
+        if (!response.ok) {
+            return setError(data.message)
+        }
+
+        dispatch(addComment(data.comment))
     } catch (e) {
         const error = e as Error
         setError(error.message)
@@ -183,22 +183,22 @@ export const commentPost = ({ postId, content, userId, setError, setLoading } : 
     }
 }
 
-export const getCommentsByPost = ({ postId } : { postId: string }) => async (dispatch:AppDispatch) => {
+export const getCommentsByPost = ({ postId }: { postId: string }) => async (dispatch: AppDispatch) => {
     try {
         dispatch(setCommentsLoading(true))
-        const response = await fetch (`${getCommentsByPostApi}${postId}` , {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setCommentsError(data.message)
+        const response = await fetch(`${getCommentsByPostApi}${postId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
+        })
 
-            dispatch(setComments(data.comments))  
+        const data = await response.json()
+        if (!response.ok) {
+            return setCommentsError(data.message)
+        }
+
+        dispatch(setComments(data.comments))
     } catch (e) {
         const error = e as Error
         setCommentsError(error.message)
@@ -207,23 +207,23 @@ export const getCommentsByPost = ({ postId } : { postId: string }) => async (dis
     }
 }
 
-export const deletePost = ({ postId } : { postId: string }) => async (dispatch:AppDispatch) => {
+export const deletePost = ({ postId }: { postId: string }) => async (dispatch: AppDispatch) => {
     try {
-        const response = await fetch (`${deletePostApi}${postId}` , {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
-    
-            const data = await response.json()
-            if(!response.ok) {
-                return setPostsError(data.message)
+        const response = await fetch(`${deletePostApi}${postId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
+        })
 
-            dispatch(deletePostFromStore({ id: postId }))
+        const data = await response.json()
+        if (!response.ok) {
+            return setPostsError(data.message)
+        }
+
+        dispatch(deletePostFromStore({ id: postId }))
     } catch (e) {
         const error = e as Error
         setPostsError(error.message)
-    } 
+    }
 }
